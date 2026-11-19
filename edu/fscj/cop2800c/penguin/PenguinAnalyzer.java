@@ -1,6 +1,6 @@
 // PenguinAnalyzer.java
-// D. Singletary
-// 3/14/25
+// Liliana Torres
+// Thursday, November 19th, 2026
 // Handles file reading, processing, and writing of penguin data
 
 package edu.fscj.cop2800c.penguin;

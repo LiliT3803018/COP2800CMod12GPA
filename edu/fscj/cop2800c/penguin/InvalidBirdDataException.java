@@ -1,6 +1,6 @@
 // InvalidBirdDataException.java
-// D. Singletary
-// 3/29/25
+// Liliana Torres
+// Thursday, November 19th, 2026
 // Custom exception for Palmer Penguin data
 
 package edu.fscj.cop2800c.penguin;

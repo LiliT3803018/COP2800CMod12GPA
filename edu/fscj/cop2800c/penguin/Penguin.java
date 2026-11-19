@@ -1,6 +1,6 @@
 // Penguin.java
-// D. Singletary
-// 3/15/25
+// Liliana Torres
+// Thursday, November 19th, 2026
 // Represents a Palmer Penguin
 
 package edu.fscj.cop2800c.penguin;

@@ -1,39 +1,42 @@
 // PalmerPenguins.java
-// D. Singletary
-// 3/14/25
+// Liliana Torres
+// Thursday, November 19th, 2026
 // Palmer Penguins application
 
 package edu.fscj.cop2800c.penguin;
 
+import java.util.ArrayList;
+import edu.fscj.cop2800c.util.DataWrapper;
+
 public class PalmerPenguins {
     public static void main(String[] args) {
         int numPenguins = 0;
-        
+
         // Create an instance of PenguinAnalyzer
         PenguinAnalyzer analyzer = new PenguinAnalyzer();
-    
+
         // Read CSV data
         numPenguins = analyzer.readPenguins();
-        
+
         // Check if any penguins were read, exit if none
         if (numPenguins == 0) {
             System.err.println(
                 "Error: No penguins were read from the file. Exiting program.");
             System.exit(1); // Exit with a non-zero status to indicate an error
         }
-    
+
         if (numPenguins > 1) {
             // Test the compareTo method
             System.out.println("Testing compareTo method:");
-        
+
             Penguin p1 = analyzer.getPenguinBySampleNum(1);
             Penguin p2 = analyzer.getPenguinBySampleNum(2);
-        
+
             if (p1 != null && p2 != null) {
                 int comparisonResult = p1.compareTo(p2);
                 System.out.println(
                     "Comparison result between first two penguins: " + comparisonResult);
-        
+
                 // Test compareTo for equality condition (p1 compared to itself)
                 int selfComparison = p1.compareTo(p1);
                 System.out.println(
@@ -44,22 +47,22 @@ public class PalmerPenguins {
         } else {
             System.out.println("Not enough penguins to test compareTo.");
         }
-    
+
         // Test the toString methods
         analyzer.showRawData();
-    
+
         // Print formatted output
         analyzer.printPenguins();
-    
+
         // Save results to a file
         analyzer.writePenguins();
-        
+
         // Test the custom exception
         System.out.println("Testing Custom Exception");
         // iterate on sample number, call various tests.
         // sample number can be used to correlate with results.
         for (int sample = 0; sample < 7; sample++) {
-        
+
             try {
                 switch (sample) {
                     case 0:
@@ -103,6 +106,27 @@ public class PalmerPenguins {
                 System.out.println(e + ": sample = " + sample);
             }
         }
-        
+
+        // Test the DataWrapper generic class
+        ArrayList<DataWrapper<Penguin>> penguinWrapperList =
+                new ArrayList<>();
+
+        // Loop to get a subset of penguins
+        for (int sample = 1; sample <= 8; sample++) {
+            Penguin penguin = analyzer.getPenguinBySampleNum(sample);
+
+            if (penguin != null) {
+                DataWrapper<Penguin> wrappedPenguin =
+                        new DataWrapper<>(penguin);
+
+                penguinWrapperList.add(wrappedPenguin);
+            }
+        }
+
+        // Display the DataWrapper list
+        if (!penguinWrapperList.isEmpty()) {
+            System.out.println("Data Wrapper List:");
+            DataWrapper.displayList(penguinWrapperList);
+        }
     }
 }
